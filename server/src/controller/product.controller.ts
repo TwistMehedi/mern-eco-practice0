@@ -91,7 +91,7 @@ export const adminAllProduct = TryCatch(async (req: Request, res: Response, next
 
         nodeCashe.set("admin-prodiucts", JSON.stringify(products), 60 * 60 * 24)
     };
-
+ //mehedi
     res.status(200).json({
         success: true,
         message: "Admin all prpoduct found",
