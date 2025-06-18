@@ -1,0 +1,17 @@
+
+import express from 'express';
+import { allOrdersForAdmin, createOrder, deleteOrder, getSingleOrder, myOrders, updateStatus } from '../controller/order.controller.js';
+import { admin } from '../middleware/admin.js';
+ 
+
+const router = express.Router();
+
+router.route("/new").post(createOrder);
+router.route("/all").get(admin, allOrdersForAdmin);
+router.route("/my").get(myOrders); 
+router.route("/:id").get(getSingleOrder); 
+router.route("/:id").delete(deleteOrder); 
+router.route("/update/:id").put(admin,updateStatus); 
+
+ 
+export default router;

@@ -1,0 +1,16 @@
+import express from 'express';
+import { adminAllProduct, allProduct, createProduct, getCategory, getLatestProduct, getProduct, updateProduct } from '../controller/product.controller.js';
+import upload from '../middleware/multer.js';
+import { admin } from '../middleware/admin.js';
+
+const router = express.Router();
+
+router.route("/create").post( admin,upload.single("image"),createProduct);
+router.route("/all").get(allProduct);
+router.route("/latest").get(getLatestProduct);
+router.route("/admin-products").get(admin,adminAllProduct);
+router.route("/category").get(getCategory);
+router.route("/update/:id").put(upload.single("image"),updateProduct);
+router.route("/:id").get(getProduct);
+
+export default router;
